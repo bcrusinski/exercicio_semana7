@@ -262,13 +262,16 @@ algoritmo "votação"
 
 var inteiro idade
 
+# Leitura da idade do usuário
 escreva("Insira sua idade: ")
 idade <- leia(idade)
 
+# Verifica se a pessoa pode votar
 Se idade for menor que 16 então:
     escreva("Você não pode votar")
 
 Se não então:
+    # Verifica se o voto é opcional ou não
     Se idade for maior ou igual 16 e menor do que 18 então:
         escreva("Voto opcional")
     Se não então:
