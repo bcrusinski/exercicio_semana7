@@ -255,6 +255,25 @@ ______
 
 **7)** Implemente o pseudocódigo para o algoritmo representado no fluxograma da imagem.
 ![Uma imagem](assets/image.png)
+
+Resposta:
+``` 
+algoritmo "votação"
+
+var inteiro idade
+
+escreva("Insira sua idade: ")
+idade <- leia(idade)
+
+Se idade for menor que 16 então:
+    escreva("Você não pode votar")
+
+Se não então:
+    Se idade for maior ou igual 16 e menor do que 18 então:
+        escreva("Voto opcional")
+    Se não então:
+        escreva("Voto obrigatório")
+```
 ______
 
 **8)** Considere a implementação da classe base FormaGeometrica em um sistema de modelagem de formas geométricas. Sua tarefa é implementar, utilizando pseudocódigo, as classes derivadas Retangulo e Circulo, que herdam da classe FormaGeometrica, adicionando atributos específicos e métodos para calcular a área de um retângulo e de um círculo, respectivamente.
@@ -271,13 +290,99 @@ Classe FormaGeometrica:
         # Implementação genérica para cálculo de área, a ser sobrescrita pelas subclasses.
 
 ```
+Resposta:
+```
+algoritmo "criando classes retângulo e circulo"
 
+Classe Retangulo herda de FormaGeometrica
+    Atributos:
+        - base
+        - altura
+    
+    Método Construtor(base, altura):
+        # Define os valores da base e altura para aqueles passados como parâmetro
+
+    Método CalcularArea():
+        # Implementação do retorno da área
+        # Devolve a base multiplicada pela altura
+        devolve(base x altura)
+
+Classe Circulo herda de FormaGeometrica
+    Atributos:
+        - raio
+    
+    Método Construtor(raio):
+        # Define o valor raio para aquele passado como parâmetro
+
+    Método CalcularArea():
+        # Implementação do retorno da área
+        # Devolve a multiplicação de pi (arredondado para 3,14) com o quadrado do raio
+        devolve(3,14 * raio^2)
+```
 ______
 
 **9)** Você foi contratado(a) como estagiário(a) da Tesla e está participando do desenvolvimento de um programa para simular o desempenho de um carro elétrico em uma corrida. Seu objetivo é determinar em quantos minutos o carro levará para completar uma determinada distância, levando em consideração uma velocidade inicial e uma taxa de aceleração constante. No entanto, você deseja garantir que o carro não exceda uma velocidade máxima nem que a corrida demore mais do que um tempo máximo. Implemente a lógica dessa simulação em pseudocódigo.
 
+Resposta:
+```
+algoritmo "simulação corrida"
 
+var inteiro distancia, velocidadeInicial, aceleracao, tempoLimite, velocidadeMaximo, tempoEncontrado, delta
 
+# Inputs dos dados necessários
+escreva("Insira a distância desejada: ")
+distancia <- leia(distancia)
+
+escreva("Insira a velocidade inicial desejada: ")
+velocidadeInicial <- leia(velocidadeInicial)
+
+escreva("Insira a acelaração desejada: ")
+aceleracao <- leia(aceleracao)
+
+escreva("Insira o tempo limite desejada: ")
+tempoLimite <- leia(tempoLimite)
+
+escreva("Insira a velocidade máxima permitida: ")
+velocidadeMaximo <- leia(velocidadeMaximo)
+
+# Para calcular o tempo para terminar a corrida, é preciso aplicar a fórmula de Bhaskara usando os valores recebidos
+# Para isso, calcularemos primeiro o delta (b^2 -4ac) e depois o restante
+# ^2 indica que um número está ao quadrado
+# raiz() se refere a raiz quadrada de um número
+
+delta <-  velocidadeInicial^2 -4*(aceleracao/2)*(-S) # Cálculo do delta representado como possível em pseudo código
+
+tempoEncontrado <- (-velocidadeInicial + raiz(delta))/2a # Cálculo da primeira raiz representado como possível em pseudo código
+
+Se tempoEncontrado for maior do que 0 então: # Verifica se o resultado é possitivo
+
+    # Uso da fórmula da velocidade variada (v = v0 + at) em pseudo código para verificar se passamos a velocidade máxima
+    Se velocidadeMaximo for menor que (velocidadeInicial + aceleracao * tempoEncontrado) então: 
+        escreva("Velocidade máxima superada. Tente outros valores de entrada") # Retorno de invalidação
+
+    # Verifica-se se o tempo limite não foi ultrapassado
+    Ou se tempoLimite for menor que tempoEncontrado então:
+        escreva("Tempo limite violado. Tente outros valores de entrada") # Retorno de invalidação
+
+    Se não então: # Caso nenhum caso inválido tenha aparecido
+        escreva("Experimento bem sucedido! Tempo final: " + tempoEncontrado) # Devolve o resultado da velocidade do trajeto
+
+Se não então: # Se o resultado for negativo, refazemos o cálculo com a segunda raíz da equação
+
+    tempoEncontrado <- (-velocidadeInicial - raiz(delta))/2a # Cálculo da segunda raiz representado como possível em pseudo código
+
+    # Uso da fórmula da velocidade variada (v = v0 + at) em pseudo código para verificar se passamos a velocidade máxima
+    Se velocidadeMaximo for menor que (velocidadeInicial + aceleracao * tempoEncontrado) então: 
+        escreva("Velocidade máxima superada. Tente outros valores de entrada") # Retorno de invalidação
+
+    # Verifica-se se o tempo limite não foi ultrapassado
+    Ou se tempoLimite for menor que tempoEncontrado então:
+        escreva("Tempo limite violado. Tente outros valores de entrada") # Retorno de invalidação
+
+    Se não então: # Caso nenhum caso inválido tenha aparecido
+        escreva("Experimento bem sucedido! Tempo final: " + tempoEncontrado) # Devolve o resultado da velocidade do trajeto
+
+```
 ______
 
 **10)** Uma matriz é uma coleção bidimensional de elementos, organizados em linhas e colunas. A seguir, é fornecida a implementação da função SomaDeMatrizes(matrizA, matrizB), que calcula a soma de duas matrizes. Sua tarefa é implementar uma função semelhante, porém que realize a multiplicação de duas matrizes.
@@ -287,7 +392,10 @@ Função SomaDeMatrizes(matrizA, matrizB):
     # Verifica se as duas matrizes têm o mesmo número de linhas e colunas
     Se tamanho(matrizA) ≠ tamanho(matrizB) então:
         Retornar "As matrizes não podem ser somadas. Elas têm dimensões diferentes."
-    Senão:
+    
+    /* Nesse contexto, o correto é "se não", pois a presença de "se" logo acima exige o par "se" e "se não",
+    mesmo que "senão" possa ter o mesmo valor em alguns contextos */
+    **Senão**: 
         linhas <- tamanho(matrizA)
         colunas <- tamanho(matrizA[0]) # Considerando que todas as linhas têm o mesmo número de colunas
         matrizResultado <- novaMatriz(linhas, colunas)
@@ -306,4 +414,67 @@ matrizB <- [[9, 8, 7], [6, 5, 4], [3, 2, 1]]
 matrizSoma <- SomaDeMatrizes(matrizA, matrizB)
 Escrever("Soma das matrizes:")
 ImprimirMatriz(matrizSoma)
+```
+Resposta:
+
+```
+algoritmo "multiplicação de matrizes"
+
+Função MultiplicaMatrizes(matriz1, matriz2):
+    # Verifica se as duas matrizes têm o tamanho de linhas e colunas compatíveis entre sí
+    Se tamanho(matriz1) != tamanho(matriz2) então:
+        Retornar "Multiplicação inválida! Dimenções diferentes encontradas."
+    
+    Se não: 
+        linhas <- tamanho(matriz1)
+        colunas <- tamanho(matriz1[0]) # Assume-se que a matriz é simétrica
+        matrizResultado <- novaMatriz(linhas, colunas)
+
+        /* ***Explicações:***
+        A multiplicação de matrizes é mais complicada em relação as somas, optando-se pelo uso de uma 
+        terceira variável para resolver a situação.
+
+        O método parte de algumas observações em cima de multiplicações matriciais:
+        1) A linha da posição resoltado sempre é a mesma linha da matriz 1
+        2) A coluna da matriz resultado sempre é a mesma coluna da matriz 2
+        3) A coluna da matriz 1 é sempre igual a linha da matriz dois
+
+        A partitir disso foram criadas 3 variáveis i, j e k que funcionam, respectivamente, como as regras apresentadas.
+
+        A escolha de que j se basearia nas colunas e não nas linhas, é irrelevante neste caso, por se tratar de um algoritmo 
+        específico para matrizes quadradas, mas teria que se basear nas colunas da segunda matriz em casos de matrizes não quadradas.
+
+        Optou-se pelo desenvolvimento da calculadora apenas para matrizes quadradas por dois motivos:
+
+        1) O autor ter desenvolvido este código com febre e com dores no corpo;
+        2) Devido a indicação do enunciado para se basear na função de somas apresentada, sem explicitar a necessidade de alterar
+        essa propriedade.
+
+        Entendo que essa não é a função ideal para a solução do problema, mas caso fossemos ajustar essa questão, seria preciso que 
+        o número de linhas e colunas da matrix resultados fossem iguais ao da matriz 2, necessitando de mudança na estruturação das 
+        variáveis para desvincular as linhas da matriz resultado das da matriz 1.
+        Ainda precisaríamos fazer mais ajustes e testes, mas esse seria o maior problema a ser resolvido. 
+        /*
+
+
+        # Loop para percorrer cada elemento das matrizes e calcular a multiplicação de forma correta
+        Para i de 0 até ser igual a linhas-1 faça:
+            Para j de 0 até ser igual a colunas-1 faça:
+                matrizResultado[i][j] <- 0
+                Para k de 0 até ser igual a colunas-1 faça:
+                    matrizResultado[i][j] <- matrizResultado + matriz1[i][k] * matriz2[k][j]
+
+        Devolve matrizResultado
+
+        ----Fim do Algoritmo--
+
+
+# Demonstração de uso
+matriz1 <- [[a, b, c], [d, e, f], [g, h, i]]
+matriz2 <- [[j, k, l], [m, n, o], [p, q, r]]
+
+matrizMultiplicada <- MultiplicaMatrizes(matriz1, matriz2)
+Escrever("A mutiplicação matrícial é: ")
+MostraMatriz(matrizMultiplicada)
+
 ```
